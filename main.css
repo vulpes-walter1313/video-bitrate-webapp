@@ -1,0 +1,45 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 16px;
+  font-family: sans-serif;
+}
+h1 {
+  font-size: 3rem;
+  padding: 1em;
+}
+body {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+}
+
+label, input {
+  margin: 1em;
+}
+input {
+  width: 10em;
+}
+.info-section {
+  margin: 2em;
+  max-width: 70ch;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.label-input-group {
+  display: flex;
+  flex-flow: row wrap;
+}
+#app-spot {
+  margin: 2em;
+  max-width: 70ch;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
