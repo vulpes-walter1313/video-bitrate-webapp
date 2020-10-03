@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H264 Bitrate Calculator</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <section class="info-section" id="Infos">
+      <h1>Perfect Bitrate Calculator</h1>
+      <p>This calculator works by choosing the bits per pixel value. Bits per pixel is a value in which you validate how much data, or information, is given per pixel. Theoretically, the higher the amount of data per pixel, the better quality and accuracy of each pixel according to the compression codec.</p>
+      <p>For h264 and h265, the goal of these codecs are to compress the video to small sizes while retaining a certain level of quality. With these codecs, like all codecs, there is a point of diminishing returns in terms of compressed filesize and quality. In simple terms, after a certain amount of data per pixel, there is no visible improvement to visual quality while the filesize becomes unnecessary.</p>
+      <!-- Add in formula for bits per pixel -->
+
+    </section>
+    <section id="app-spot">
+      <form class="form" action="index.html" method="post">
+        <!-- Pixel Width -->
+        <div class="label-input-group">
+          <label for="pixel-width">Pixel Width: </label>
+          <input type="number" name="pixel-width" value="" id="pixel-width">
+        </div>
+        <!-- Pixel Height -->
+        <div class="label-input-group">
+          <label for="pixel-height">Pixel Height: </label>
+          <input type="number" name="pixel-height" value="" id="pixel-height">
+        </div>
+        <!-- Framerate -->
+        <div class="label-input-group">
+          <label for="framerate">Framerate (fps): </label>
+          <input type="text" name="framerate" value="" id="framerate">
+        </div>
+        <!-- Bits per pixel -->
+        <div class="label-input-group">
+          <label for="pixel-width">Bits Per Pixel: </label>
+          <!-- add pattern validation for bits per pixel -->
+          <input type="text" name="bits-per-pixel" value="" id="bits-per-pixel">
+        </div>
+        <input type="button" name="" value="Get Bitrate">
+      </form>
+      <div id="bitrate answers">
+        <p>Your target bitrate should be: </p>
+      </div>
+    </section>
+  </body>
+</html>
