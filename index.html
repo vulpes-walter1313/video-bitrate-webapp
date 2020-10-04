@@ -8,11 +8,8 @@
   </head>
   <body>
     <section class="info-section" id="Infos">
-      <h1>Perfect Bitrate Calculator</h1>
-      <p>This calculator works by choosing the bits per pixel value. Bits per pixel is a value in which you validate how much data, or information, is given per pixel. Theoretically, the higher the amount of data per pixel, the better quality and accuracy of each pixel according to the compression codec.</p>
-      <p>For h264 and h265, the goal of these codecs are to compress the video to small sizes while retaining a certain level of quality. With these codecs, like all codecs, there is a point of diminishing returns in terms of compressed filesize and quality. In simple terms, after a certain amount of data per pixel, there is no visible improvement to visual quality while the filesize becomes unnecessary.</p>
-      <!-- Add in formula for bits per pixel -->
-
+      <h1>Perfect H264 Bitrate Calculator</h1>
+      <p>This calculator works by choosing the bits per pixel value and returning the right bitrate that will give you what bits per pixel value. Bits per pixel is a value which stands for how much data, or information, is in each pixel. Theoretically, the higher the amount of data per pixel, the better quality and accuracy of each pixel according to the compression codec. However past .3bpp in H264, there is no visual gain in quality and the file size increases without a purpose. Find <a href="#bpp-info">more info</a> below</p>
     </section>
     <section id="app-spot">
       <form class="form" action="index.html" method="post">
@@ -29,19 +26,149 @@
         <!-- Framerate -->
         <div class="label-input-group">
           <label for="framerate">Framerate (fps): </label>
-          <input type="text" name="framerate" value="" id="framerate">
+          <input type="text" name="framerate" value="" id="framerate" pattern="[0-9]+(\.)?[0-9]+">
         </div>
         <!-- Bits per pixel -->
         <div class="label-input-group">
           <label for="pixel-width">Bits Per Pixel: </label>
           <!-- add pattern validation for bits per pixel -->
-          <input type="text" name="bits-per-pixel" value="" id="bits-per-pixel">
+          <input type="text" name="bits-per-pixel" value="" id="bits-per-pixel" pattern="\.[0-9]+">
         </div>
-        <input type="button" name="" value="Get Bitrate">
+        <input type="button" name="" value="Get Bitrate" id="get-bitrate-btn">
       </form>
-      <div id="bitrate answers">
-        <p>Your target bitrate should be: </p>
+      <div id="bitrate-answers">
+        <p></p>
       </div>
     </section>
+    <section class="info-section">
+      <!-- all the info -->
+      <h2>Why does bits per pixel matter?</h2>
+      <p>For h264 and h265, the goal of these codecs are to compress the video to small sizes while retaining a certain level of quality. With these codecs, like all codecs, there is a point of diminishing returns in terms of compressed filesize and quality. In simple terms, after a certain amount of data per pixel, there is no visible improvement to visual quality while the filesize becomes unnecessary. All the info below is specific to h264 and if you wish to get a good bitrate for h265, just cut the bitrate in half. So the quality in h264 @ 7.11Mbps is roughly the same as 3.55Mbps in H265</p>
+      <h2 id="bpp-info">What are the recommended bpp values?</h2>
+      <p>As we mentioned before, the higher the bpp the better quality. However there is a point of diminishing returns and a point where more bits per pixel do not improve visual quality. Below is a good chart of reference</p>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">BPP Quality Reference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Value</td>
+            <td>Best Suited For</td>
+            <td>Filesize Per Minute (1080HD)</td>
+          </tr>
+          <tr>
+            <td>.3 bpp</td>
+            <td>Maximum quality; No visual loss</td>
+            <td>853.2Mb</td>
+          </tr>
+          <tr>
+            <td>.2-.25 bpp</td>
+            <td>Fast action; Fast graphics</td>
+            <td>711Mb @ .25 bpp</td>
+          </tr>
+          <tr>
+            <td>.15-.2 bpp</td>
+            <td>Moderate Movement; High Quality Previews</td>
+            <td>426Mb</td>
+          </tr>
+          <tr>
+            <td>.1 bpp</td>
+            <td>Stable Shots; quick movement or scene changes become visually blocky</td>
+            <td>284Mb</td>
+          </tr>
+          <tr>
+            <td>&lt; .1</td>
+            <td>Good for slideshows; little to no movements look okay; Very visually blocky with fast movement</td>
+            <td>&lt; 284Mbs</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>But Wait! I want to find a good bitrate to upload to youtube!</h3>
+      <p>For that you have 2 choices. This depends on your storage space, internet connection, and personal choice. Youtube recompresses the files you upload, which is why if you upload a compressed h264, it could look worse when you upload it. But fear not there are some options you have!</p>
+      <p>To get the best version of your video on youtube, you can compress to h264 at a bitrate that produces a bits per pixel value of .3 or higher. Use the calculator obviously... This option will give you a big filesize and will take longer to upload, but not like uploading a prores file. By having more data per pixel, your video stands a better chance of not being too damaged during Youtube's own recompression.</p>
+      <p>Your other option is to upload a prores or cineform file as it is accepted as of right now (Oct. 2020).</p>
+      <p><a href="https://support.google.com/youtube/troubleshooter/2888402?hl=en">Youtube uploads accepted formats</a></p>
+      <p>The only thing I warn you is to make a quick 1 minute video upload test with prores and cineform. I personally have encountered Prores videos having the gamma shifted resulting in faded blacks and colours. Of course also doing a one minute video upload test will give you a good idea of how long it will take for your full length video to load.</p>
+      <h2>Resolution Reference</h2>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Common Resolutions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Standard</td>
+            <td>Width</td>
+            <td>Height</td>
+          </tr>
+          <tr>
+            <td>SD</td>
+            <td>640</td>
+            <td>480</td>
+          </tr>
+          <tr>
+            <td>HD</td>
+            <td>1280</td>
+            <td>720</td>
+          </tr>
+          <tr>
+            <td>Full HD</td>
+            <td>1920</td>
+            <td>1080</td>
+          </tr>
+          <tr>
+            <td>DCI 2K</td>
+            <td>2048</td>
+            <td>1080</td>
+          </tr>
+          <tr>
+            <td>WQHD</td>
+            <td>2560</td>
+            <td>1440</td>
+          </tr>
+          <tr>
+            <td>4K UHD</td>
+            <td>3840</td>
+            <td>2160</td>
+          </tr>
+          <tr>
+            <td>DCI 4K</td>
+            <td>4096</td>
+            <td>2160</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Common Framerates</h2>
+      <p>This calculator will let you use any number of frames per second. However below is a list of world Standard which can be easy to forget.</p>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Standard framerate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Standard</td>
+            <td>Framerate</td>
+          </tr>
+          <tr>
+            <td>NTSC Film</td>
+            <td>23.976 fps</td>
+          </tr>
+          <tr>
+            <td>PAL Film/Video</td>
+            <td>25 fps</td>
+          </tr>
+          <tr>
+            <td>NTSC Video</td>
+            <td>29.97 fps</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <script type="text/javascript" src="bitrate.js"></script>
   </body>
 </html>
