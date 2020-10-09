@@ -9,7 +9,7 @@ html {
 }
 h1 {
   font-size: 3rem;
-  padding: 1em 1em .3em;
+  padding: .5em 1em .3em;
 }
 h2 {
   font-size: 1.5rem;
@@ -45,7 +45,7 @@ label, input {
   margin: 1em;
 }
 input {
-  width: 10em;
+  width: 8em;
 }
 /* Table Start */
 table, td {
@@ -64,7 +64,7 @@ th {
 }
 /* Table End */
 .info-section {
-  margin: 2em;
+  margin: 0 2em 2em;
   max-width: 70ch;
   display: flex;
   flex-flow: column nowrap;
